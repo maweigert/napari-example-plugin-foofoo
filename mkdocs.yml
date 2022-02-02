@@ -1,0 +1,9 @@
+site_name: foofoo
+site_description: A simple plugin to use with napari
+site_author: Napari Developer
+
+theme: readthedocs
+
+
+pages:
+- Home: index.md

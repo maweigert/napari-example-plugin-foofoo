@@ -1,0 +1,11 @@
+name: foofoo
+display_name: FooFoo
+contributions:
+  commands:
+    - id: foofoo.get_reader
+      python_name: foofoo._reader:napari_get_reader
+      title: Open data with FooFoo  
+  readers:
+    - command: foofoo.get_reader
+      accepts_directories: false
+      filename_patterns: ['*.npy']  
