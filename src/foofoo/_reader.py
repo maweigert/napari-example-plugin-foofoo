@@ -27,9 +27,9 @@ def napari_get_reader(path):
         # if it is a list, it is assumed to be an image stack...
         # so we are only going to look at the first file.
         path = path[0]
-
+    
     # if we know we cannot read the file, we immediately return None.
-    if not path.endswith(".npy"):
+    if not path.endswith(".ccc"):
         return None
 
     # otherwise we return the *function* that can read ``path``.
@@ -58,15 +58,19 @@ def reader_function(path):
         Both "meta", and "layer_type" are optional. napari will default to
         layer_type=="image" if not provided
     """
+    
+    
+    print('FOOFOO READER')
+
+
     # handle both a string and a list of strings
     paths = [path] if isinstance(path, str) else path
     # load all files into array
-    arrays = [np.load(_path) for _path in paths]
-    # stack arrays into single array
-    data = np.squeeze(np.stack(arrays))
-
+    
     # optional kwargs for the corresponding viewer.add_* method
     add_kwargs = {}
 
-    layer_type = "image"  # optional, default is "image"
+
+    layer_type = "points"  # optional, default is "image"
+    data = np.array([[0,0],[1,1],[2,2]])
     return [(data, add_kwargs, layer_type)]
